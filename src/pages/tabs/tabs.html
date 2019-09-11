@@ -1,0 +1,52 @@
+   <ion-menu [content]="content" >
+    
+    <ion-header>
+    <ion-toolbar>
+   
+           <img class="avatar" src="assets/img/i2.png">
+           <div class="name-user">{{nombre}} {{apellido}}</div>
+           <div class="rut-user">{{rut}}</div>
+
+ 
+    </ion-toolbar>
+  </ion-header>
+
+   <ion-content >
+      <ion-list>
+     <div class="items-menu">
+    <div class="item-menu" (click)="scan()">
+          <ion-icon name="md-qr-scanner"></ion-icon>
+           <div class="title">Escanear Producto</div>
+    </div>
+
+
+    <div class="item-menu">
+       <ion-icon name="md-person"></ion-icon>
+          <div class="title">Perfil</div>
+    </div>
+  <div class="item-menu">
+      <ion-icon name="md-settings"></ion-icon>
+         <div class="title">Opciones</div>
+    </div>
+  <div class="item-menu">
+      <ion-icon name="md-information-circle"></ion-icon>
+         <div class="title">Acerca De</div>
+    </div>
+  <div class="item-menu"  (click)="cerrarsesion()" >
+    <ion-icon name="md-log-out"></ion-icon>
+          <div class="title">Cerrar Sesion</div>
+    </div>
+</div>
+     </ion-list>
+   </ion-content>
+  
+
+   </ion-menu>
+   <ion-nav [root]="rootPage" #content swipeBackEnabled="true" ></ion-nav> 
+
+
+<ion-tabs color="primary">
+  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home" ></ion-tab>
+  <ion-tab *ngFor="let num of num" [root]="tab2Root" tabTitle="Carro" tabIcon="cart" tabBadge="{{num.num}}"  tabBadgeStyle="danger"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Perfil" tabIcon="md-person"></ion-tab>
+</ion-tabs>

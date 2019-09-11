@@ -1,0 +1,42 @@
+<!--
+  Generated template for the Login page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+
+<ion-content padding>
+
+   <br>
+    <br>
+    <div class="header">
+     <ion-icon name="md-cart" class="md-cart"></ion-icon>
+    <h1>SpeedoMart</h1>
+    <h6>Compra rapida</h6>
+    </div>
+ <br>
+  <form [formGroup]="login" (ngSubmit)="validarLogin()">
+<ion-list>
+  <ion-item>
+    <ion-label><ion-icon name="md-person"></ion-icon></ion-label>
+    <ion-input type="text" placeholder="Ingrese RUT" value="" formControlName="rut"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label><ion-icon name="md-unlock"></ion-icon></ion-label>
+    <ion-input type="password" placeholder="Ingrese Contraseña" formControlName="pass" ></ion-input>
+  </ion-item>
+
+     <br>
+   <button [disabled]="login.invalid" ion-button block color="light">Entrar</button> 
+     
+</ion-list>
+  </form>
+      <button ion-button block color="secondary">Entrar como invitado</button> 
+      <br>
+       <br>
+       <div class="registro"><a (click)="loadregistro()">Aun no tienes cuenta? Registrate Aqui</a></div>
+</ion-content>

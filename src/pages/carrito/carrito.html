@@ -1,0 +1,57 @@
+<!--
+  Generated template for the Carrito page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      <ion-icon name="cart"></ion-icon>
+      Carro de compras
+     </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content padding>
+  <ion-card-content class="center-text" style="font-size:17px; color:#488aff;"><b>Productos en su carro de compra</b></ion-card-content>
+<ion-list *ngFor="let productsCar of productsCar">
+    <ion-item-sliding>
+  <ion-item class="item-prod">
+    <ion-thumbnail item-start>
+         <img  src="http://localhost:8080/SPEEDOMART/{{productsCar.imagen}}">
+    </ion-thumbnail>
+    <div class="info-prod">
+    <h2><b>{{productsCar.nombre}}</b></h2>
+    <p>Codigo de barra : {{productsCar.codigo}}</p>
+    <ion-icon name="md-pricetag"></ion-icon><b> $ {{productsCar.precio}}</b>
+    </div>
+ </ion-item>
+
+      <ion-item-options side="right">
+                         <button ion-button color="danger" (click)="borrarCar(productsCar)">
+                               Borrar
+                         </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
+</ion-list>
+
+<ion-list *ngFor="let total of total">
+  <ion-item class="item-prod">
+    
+    <div class="info-prod" style="text-align:right;">
+    <b>TOTAL : </b><b> $ {{total.sum}}</b>
+    </div>
+ </ion-item>    
+</ion-list>
+
+<button (click)="pagarCarrito()" ion-button block color="primary"><ion-icon name="cart"></ion-icon>    Comprar ahora</button> 
+
+</ion-content>
+

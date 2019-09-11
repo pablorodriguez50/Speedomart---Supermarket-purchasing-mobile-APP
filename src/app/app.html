@@ -1,0 +1,50 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+       <ion-avatar item-start class="avatar">
+           <img src="../../assets/img/i2.png">
+           Ricardo Andres Rodriguez
+         </ion-avatar> 
+        <ion-title>19.523.283-4</ion-title>
+         
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+      
+    <div class="items-menu">
+    <div class="item-menu" (click)="scanBarcode()">
+          <ion-icon name="md-qr-scanner"></ion-icon>
+           <div class="title">Escanear Producto</div>
+    </div>
+
+
+    <div class="item-menu">
+       <ion-icon name="md-person"></ion-icon>
+          <div class="title">Perfil</div>
+    </div>
+  <div class="item-menu">
+      <ion-icon name="md-settings"></ion-icon>
+         <div class="title">Opciones</div>
+    </div>
+  <div class="item-menu">
+      <ion-icon name="md-information-circle"></ion-icon>
+         <div class="title">Acerca De</div>
+    </div>
+  <div class="item-menu">
+    <ion-icon name="md-log-out"></ion-icon>
+          <div class="title">Cerrar Sesion</div>
+    </div>
+</div>
+
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

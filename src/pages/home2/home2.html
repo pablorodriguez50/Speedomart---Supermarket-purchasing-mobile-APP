@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+      <ion-buttons end>
+         <button icon-only ion-button (click)="refreshPage()">
+          <ion-icon name="md-refresh" class="color-icon"></ion-icon>
+        </button>  
+    </ion-buttons>
+    <ion-title class="title">Productos por categoria</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content> 
+
+
+<ion-list>
+  <ion-item class="categorias">
+    <ion-label>Seleccione Categoria</ion-label>
+    <ion-select [(ngModel)]="gaming" (ionChange)="moverCategoria(gaming)">
+      <ion-option [value]="cates.idCategoria" *ngFor="let cates of cate">{{cates.nombreCAT}}</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+
+
+  <ion-searchbar class="search" [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" 
+  (ionInput)="onInput($event)"(ionCancel)="onCancel($event)" placeholder="Buscar">
+</ion-searchbar>
+     
+   <ion-card-content class="center-text" style="font-size:25px; color:#488aff;"><b>Destacados</b></ion-card-content>
+
+    <div *ngIf="!products2" class="sinproductos">No se encuentra productos en esta categoria</div>  
+    <ion-list *ngFor="let products2 of products2">
+            <ion-row>
+                <ion-col ion-6>
+                  <ion-card class="card" (click)="loadinfoprod()">
+                    <img  src="http://speedomart.000webhostapp.com/SPEEDOMART/{{products2.imagen}}">
+                    <ion-card-content class="center-text" style="font-size:20px">
+                      <b>{{products2.nombre}}</b>
+                      <br>
+                      <ion-icon name="md-pricetag"></ion-icon><b> ${{products2.precio}}</b>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>      
+            </ion-row>      
+        </ion-list>
+ 
+
+
+ <!-- <button (click)="tulocalizacion()" ion-button block color="secondary">Localizar</button>
+  
+  <p>Tu localizacion es : {{ location?.coords.latitude }} / {{ location?.coords.longitude }}  </p> -->
+
+
+
+</ion-content>

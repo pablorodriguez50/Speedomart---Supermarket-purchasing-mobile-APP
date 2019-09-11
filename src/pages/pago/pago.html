@@ -1,0 +1,90 @@
+<!--
+  Generated template for the Pago page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      <ion-icon name="ios-card"></ion-icon>
+      Realizar compra
+     </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content padding>
+  <ion-card-content class="center-text" style="font-size:17px; color:#488aff;"><b>Productos a comprar</b></ion-card-content>
+<ion-list *ngFor="let productsCar of productsCar">
+
+  <ion-item class="item-prod">
+    <ion-thumbnail item-start>
+         <img  src="http://localhost:8080/SPEEDOMART/{{productsCar.imagen}}">
+    </ion-thumbnail>
+    <div class="info-prod">
+    <h2><b>{{productsCar.nombre}}</b></h2>
+    <p>Codigo de barra : {{productsCar.codigo}}</p>
+    <ion-icon name="md-pricetag"></ion-icon><b> $ {{productsCar.precio}}</b>
+    </div>
+ </ion-item>
+
+</ion-list>
+
+<ion-list *ngFor="let total of total">
+  <ion-item class="item-prod2">
+    <div class="info-prod" style="text-align:right;">
+    <b>SUB-TOTAL : </b><b> $ {{total.sum}}</b>
+    </div>
+ </ion-item>    
+</ion-list>
+
+<form [formGroup]="registrar2" (ngSubmit)="pagarCarrito()">
+<ion-list>
+
+<ion-card-content class="center-text" style="font-size:17px; color:#488aff;"><b>Escoger medio de pago</b></ion-card-content>
+  <ion-item>
+    <ion-label><ion-icon name="card"></ion-icon></ion-label>
+    <ion-input type="text" placeholder="Numero de tarjeta" formControlName="numTarjeta" value=""></ion-input>
+  </ion-item>
+
+<ion-card-content class="center-text" style="font-size:17px; color:#488aff;"><b>Tipo de tarjeta</b></ion-card-content>
+   <ion-list radio-group [(ngModel)]="tipo" formControlName="tipoTarjeta">
+  <ion-item>
+    <ion-label><img src="assets/img/visa.png" style="width:55px"></ion-label>
+    <ion-radio value="visa" checked></ion-radio>
+  </ion-item>
+  <ion-item>    
+    <ion-label><img src="assets/img/master.png" style="width:55px"></ion-label>
+    <ion-radio value="master"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label><img src="assets/img/red.png" style="width:55px"></ion-label>
+    <ion-radio value="red"></ion-radio>
+  </ion-item>
+</ion-list>
+
+<ion-item >
+  <ion-label>Seleccione Banco</ion-label>
+  <ion-select [(ngModel)]="banco" formControlName="tipoBanco">
+    <ion-option value="bEstado">Banco Estado</ion-option>
+    <ion-option value="bbva">BBVA</ion-option>
+    <ion-option value="bSantander">Banco Santander</ion-option>
+    <ion-option value="bChile">Banco de Chile</ion-option>
+    <ion-option value="bci">BCI</ion-option>
+  </ion-select>
+</ion-item>
+
+     <br>
+    <button [disabled]="registrar2.invalid" ion-button block color="primary">Efectuar Pago</button> 
+</ion-list>
+</form>
+
+
+<!--<button (click)="pagarCarrito()" ion-button block color="primary"><ion-icon name="ios-card"></ion-icon>Pagar ahora</button> -->
+
+</ion-content>
+
